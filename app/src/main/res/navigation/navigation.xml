@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/foodFragment">
+
+    <fragment
+        android:id="@+id/foodFragment"
+        android:name="com.example.myapplication.Fragments.FoodFragment"
+        android:label="@string/food"
+        tools:layout="@layout/fragment_food" />
+    <fragment
+        android:id="@+id/moneyFragment"
+        android:name="com.example.myapplication.Fragments.MoneyFragment"
+        android:label="@string/Money"
+        tools:layout="@layout/fragment_money" />
+    <fragment
+        android:id="@+id/moodFragment"
+        android:name="com.example.myapplication.Fragments.MoodFragment"
+        android:label="@string/Mood"
+        tools:layout="@layout/fragment_mood" />
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.example.myapplication.Fragments.ShopFragment"
+        android:label="@string/Shop" />
+</navigation>

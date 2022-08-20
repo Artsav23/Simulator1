@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/food"
+        android:id="@+id/foodFragment"
+        android:icon="@drawable/ic_food"/>
+
+    <item
+        android:title="@string/Money"
+        android:id="@+id/moneyFragment"
+        android:icon="@drawable/ic_money"
+        />
+
+    <item
+        android:title="@string/Mood"
+        android:icon="@drawable/ic_smile"
+        android:id="@+id/moodFragment"/>
+    <item
+        android:title="@string/Shop"
+        android:icon="@drawable/ic_shop"
+        android:id="@+id/shopFragment"/>
+</menu>
