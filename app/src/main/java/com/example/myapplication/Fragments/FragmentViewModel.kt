@@ -24,18 +24,16 @@ class FragmentViewModel {
                     Toast.makeText(context, "Small money", Toast.LENGTH_SHORT).show()
                 }
                 else {
+                    if (moneyPoint < 0){
+                        MainActivityViewModel.Count.spendMoney -= moneyPoint
+                    }
+                    if (foodPoint > 0 ) {
+                        MainActivityViewModel.Count.AmountOfFoodEaten += 1
+                    }
                     MainActivityViewModel().add(foodPoint, moneyPoint, moodPoint)
                 }
             }
         }
     }
 
-    fun checkMoney (foodRange: IntRange, money: Int, moodRange: IntRange?, context: Context?) {
-        if (MainActivityViewModel.Count.money < money) {
-            Toast.makeText(context, "Small money", Toast.LENGTH_SHORT).show()
-        }
-        else {
-            action(foodRange, -money..-money, moodRange, context)
-        }
-    }
 }

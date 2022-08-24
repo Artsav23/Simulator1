@@ -10,9 +10,12 @@ object Count {
     var food = 30
     var money = 500
     var mood = 30
+    var AmountOfFoodEaten = 0
+    var spendMoney = 0
     var normalClothes = false
     var clubClothes = false
     var workingClothes = false
+    var timeInSimulator = 0
 }
 
     fun add(food: Int?, money: Int?, mood: Int?) {
@@ -65,6 +68,7 @@ object Count {
                         Count.normalClothes = true
                         Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
                         Count.money -= money
+                        Count.spendMoney += money
                     }
                 }
                 2-> {
@@ -75,6 +79,7 @@ object Count {
                         Count.clubClothes = true
                         Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
                         Count.money -= money
+                        Count.spendMoney += money
                     }
                 }
                 3-> {
@@ -85,6 +90,7 @@ object Count {
                         Count.workingClothes = true
                         Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
                         Count.money -= money
+                        Count.spendMoney += money
                     }
                 }
             }

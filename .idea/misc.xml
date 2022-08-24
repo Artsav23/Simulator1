@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/savva/Desktop/MyApplication3/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/savva/Desktop/MyApplication3/app/src/main/res/layout/fragment_blank.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/savva/Desktop/MyApplication3/app/src/main/res/layout/fragment_food.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/savva/Desktop/MyApplication3/app/src/main/res/layout/fragment_money.xml" value="0.24456521739130435" />
         <entry key="..\:/Users/savva/Desktop/MyApplication3/app/src/main/res/layout/fragment_mood.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/savva/Desktop/MyApplication3/app/src/main/res/layout/fragment_shop.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/savva/Desktop/MyApplication3/app/src/main/res/layout/fragment_statistic.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/savva/Desktop/MyApplication3/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
       </map>
     </option>

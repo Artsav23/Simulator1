@@ -41,7 +41,7 @@ class FoodFragment : Fragment() {
                 Toast.makeText(activity, "In this costume you not let in cafe", Toast.LENGTH_SHORT).show()
             }
             else {
-                fragmentViewModel.action(10..15, -20..-20, null, context)
+                fragmentViewModel.action(10..15, -20..-20, 0..0, context)
             }
         }
     }

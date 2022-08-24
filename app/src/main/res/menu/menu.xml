@@ -19,4 +19,8 @@
         android:title="@string/Shop"
         android:icon="@drawable/ic_shop"
         android:id="@+id/shopFragment"/>
+<item
+        android:title="@string/Statistic"
+        android:icon="@drawable/ic_statistic"
+        android:id="@+id/statisticFragment"/>
 </menu>

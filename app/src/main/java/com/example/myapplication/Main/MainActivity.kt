@@ -10,6 +10,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.Main.MainActivity.Binding.binding
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
+import java.sql.Time
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         mainActivityViewModel = MainActivityViewModel()
         setContentView(binding.root)
         controller()
+        thread {
+            time()
+        }
         mainActivityViewModel.reloadCount()
     }
 
@@ -33,6 +38,13 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.fragment)
         binding.bottomNavigationView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, AppBarConfiguration(setOf(R.id.foodFragment,
-            R.id.moneyFragment, R.id.moodFragment, R.id.shopFragment)))
+            R.id.moneyFragment, R.id.moodFragment, R.id.shopFragment, R.id.statisticFragment)))
+    }
+
+    private fun time() {
+        while (true) {
+            Thread.sleep(60000)
+            MainActivityViewModel.Count.timeInSimulator += 1
+        }
     }
 }
