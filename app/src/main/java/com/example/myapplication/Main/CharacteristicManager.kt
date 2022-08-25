@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import com.example.myapplication.Main.MainActivity.Binding.binding
 
-class MainActivityViewModel {
+class CharacteristicManager {
 
 object Count {
     var food = 30
@@ -18,33 +18,28 @@ object Count {
     var timeInSimulator = 0
 }
 
-    fun add(food: Int?, money: Int?, mood: Int?) {
-        if (food != null) {
-            if (Count.food + food > 100){
-                Count.food = 100
-            }
-            else if (Count.food + food < 0){
-                Count.food = 0
-            }
-            else{
-                Count.food += food
+    fun add(food: Int, money: Int, mood: Int) {
+        if (Count.food + food > 100){
+            Count.food = 100
+        }
+        else if (Count.food + food < 0){
+            Count.food = 0
+        }
+        else{
+            Count.food += food
+        }
 
-            }
+        if (Count.mood + mood > 100){
+            Count.mood = 100
         }
-        if (money != null) {
-            Count.money += money
+        else if (Count.mood + mood < 0){
+            Count.mood = 0
         }
-        if (mood !=null) {
-            if (Count.mood + mood > 100){
-                Count.mood = 100
-            }
-            else if (Count.mood + mood < 0){
-                Count.mood = 0
-            }
-            else {
-                Count.mood += mood
-            }
+        else {
+            Count.mood += mood
         }
+
+        Count.money += money
         reloadCount()
     }
 

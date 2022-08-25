@@ -10,23 +10,28 @@ import com.example.myapplication.databinding.FragmentMoneyBinding
 class MoneyFragment : Fragment() {
 
     private lateinit var binding: FragmentMoneyBinding
-    private var foodViewModel = FragmentViewModel()
+    private var moneyManager = FragmentManager()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMoneyBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.searchInTheTrash.setOnClickListener {
-            foodViewModel.action(-3..2, 2..3, -5..-3, context)
-        }
+        searchInTheTrash()
+        panhandle()
+    }
 
+    private fun searchInTheTrash() {
+        binding.searchInTheTrash.setOnClickListener {
+            moneyManager.action(foodRange = -3..2, money =  2..3, mood =  -5..-3, context)
+        }
+    }
+
+    private fun panhandle() {
         binding.panhandle.setOnClickListener {
-                foodViewModel.action(-3..1, 1..6, -3..-2, context)
+            moneyManager.action(foodRange = -3..1, money = 1..6, mood = -3..-2, context)
         }
     }
 }

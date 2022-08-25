@@ -6,38 +6,47 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.myapplication.Main.MainActivityViewModel
+import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentMoodBinding
 
 class MoodFragment : Fragment() {
 
     private lateinit var binding: FragmentMoodBinding
-    private var fragmentViewModel = FragmentViewModel()
+    private var moodManager = FragmentManager()
+    var count = CharacteristicManager.Count
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMoodBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        walkToPark()
+        goToIceSkating()
+        talkWithPasserby()
+    }
+
+    private fun walkToPark() {
         binding.walkToPark.setOnClickListener {
-            fragmentViewModel.action(-2..0, 0..0, 3..6, context)
+            moodManager.action(-2..0, 0..0, 3..6, context)
         }
+    }
 
-        binding.talkWithPasserby.setOnClickListener {
-            fragmentViewModel.action(-2..0, 0..2, 3..6, context)
-        }
-
+    private fun goToIceSkating() {
         binding.goToIceSkating.setOnClickListener {
-            if (MainActivityViewModel.Count.normalClothes) {
-                fragmentViewModel.action(-10..-3, -10..-10, 10..15, context)
+            if (count.normalClothes) {
+                moodManager.action(-10..-3, -10..-10, 10..15, context)
             }
             else {
                 Toast.makeText(context, "Buy normal costume", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    private fun talkWithPasserby() {
+        binding.talkWithPasserby.setOnClickListener {
+            moodManager.action(-2..0, 0..2, 3..6, context)
         }
     }
 }

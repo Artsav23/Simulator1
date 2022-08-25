@@ -10,12 +10,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.Main.MainActivity.Binding.binding
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
-import java.sql.Time
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mainActivityViewModel: MainActivityViewModel
+    private lateinit var characteristicManager: CharacteristicManager
 
     object Binding{
     @SuppressLint("StaticFieldLeak")
@@ -25,13 +24,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        mainActivityViewModel = MainActivityViewModel()
+        characteristicManager = CharacteristicManager()
         setContentView(binding.root)
         controller()
         thread {
             time()
         }
-        mainActivityViewModel.reloadCount()
+        characteristicManager.reloadCount()
     }
 
     private fun controller() {
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     private fun time() {
         while (true) {
             Thread.sleep(60000)
-            MainActivityViewModel.Count.timeInSimulator += 1
+            CharacteristicManager.Count.timeInSimulator += 1
         }
     }
 }
