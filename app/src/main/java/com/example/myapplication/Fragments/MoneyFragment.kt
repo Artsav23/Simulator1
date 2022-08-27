@@ -25,13 +25,13 @@ class MoneyFragment : Fragment() {
 
     private fun searchInTheTrash() {
         binding.searchInTheTrash.setOnClickListener {
-            moneyManager.action(foodRange = -3..2, money =  2..3, mood =  -5..-3, context)
+            moneyManager.action(foodRange = -3..2, money =  2..5, mood =  -5..-3, context)
         }
     }
 
     private fun panhandle() {
         binding.panhandle.setOnClickListener {
-            moneyManager.action(foodRange = -3..1, money = 1..6, mood = -3..-2, context)
+            moneyManager.action(foodRange = -3..1, money = 2..6, mood = -3..-2, context)
         }
     }
 }

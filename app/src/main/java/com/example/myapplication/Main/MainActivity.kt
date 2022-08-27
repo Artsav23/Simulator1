@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     private fun time() {
         while (true) {
             Thread.sleep(60000)
-            CharacteristicManager.Count.timeInSimulator += 1
+            CharacteristicManager.Information.timeInSimulator += 1
         }
     }
 }

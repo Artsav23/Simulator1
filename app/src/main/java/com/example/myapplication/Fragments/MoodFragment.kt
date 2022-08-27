@@ -13,7 +13,7 @@ class MoodFragment : Fragment() {
 
     private lateinit var binding: FragmentMoodBinding
     private var moodManager = FragmentManager()
-    var count = CharacteristicManager.Count
+    var count = CharacteristicManager.Information
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMoodBinding.inflate(inflater)

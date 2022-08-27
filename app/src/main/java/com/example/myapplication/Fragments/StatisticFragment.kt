@@ -12,11 +12,9 @@ import com.example.myapplication.databinding.FragmentStatisticBinding
 class StatisticFragment : Fragment() {
 
     lateinit var  binding: FragmentStatisticBinding
+    private var costume = CharacteristicManager.Information
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentStatisticBinding.inflate(inflater)
             return binding.root
     }
@@ -30,24 +28,26 @@ class StatisticFragment : Fragment() {
     }
 
     private fun costume() {
-        if (CharacteristicManager.Count.normalClothes) {
+        if (costume.normalClothes) {
             binding.normalCostume.visibility = View.VISIBLE
         }
-        if (CharacteristicManager.Count.clubClothes) {
+        if (costume.clubClothes) {
             binding.clubCostume.visibility = View.VISIBLE
         }
-        if (CharacteristicManager.Count.workingClothes) {
+        if (costume.workingClothes) {
             binding.workingClothes.visibility = View.VISIBLE
         }
     }
 
     private fun amountFood() {
-        binding.amountFood.text = CharacteristicManager.Count.AmountOfFoodEaten.toString()
+        binding.amountFood.text = CharacteristicManager.Information.AmountOfFoodEaten.toString()
     }
+
     private fun spendMoney() {
-        binding.spendMoneyNumber.text = CharacteristicManager.Count.spendMoney.toString()
+        binding.spendMoneyNumber.text = CharacteristicManager.Information.spendMoney.toString()
     }
+
     private fun time() {
-        binding.time.text = "${CharacteristicManager.Count.timeInSimulator} min"
+        binding.time.text = "${CharacteristicManager.Information.timeInSimulator} min"
     }
 }

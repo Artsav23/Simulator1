@@ -6,7 +6,7 @@ import com.example.myapplication.Main.CharacteristicManager
 
 class FragmentManager {
 
-    var count = CharacteristicManager.Count
+    var count = CharacteristicManager.Information
 
     fun action (foodRange: IntRange, money: IntRange, mood: IntRange, context: Context?) {
         val foodPoint = foodRange.random()

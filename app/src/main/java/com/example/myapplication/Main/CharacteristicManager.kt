@@ -6,7 +6,7 @@ import com.example.myapplication.Main.MainActivity.Binding.binding
 
 class CharacteristicManager {
 
-object Count {
+object Information {
     var food = 30
     var money = 500
     var mood = 30
@@ -19,78 +19,95 @@ object Count {
 }
 
     fun add(food: Int, money: Int, mood: Int) {
-        if (Count.food + food > 100){
-            Count.food = 100
-        }
-        else if (Count.food + food < 0){
-            Count.food = 0
-        }
-        else{
-            Count.food += food
-        }
-
-        if (Count.mood + mood > 100){
-            Count.mood = 100
-        }
-        else if (Count.mood + mood < 0){
-            Count.mood = 0
-        }
-        else {
-            Count.mood += mood
-        }
-
-        Count.money += money
+        addFood(food)
+        addMood(mood)
+        Information.money += money
         reloadCount()
     }
 
     fun reloadCount() {
-        binding.foodCounter.text = Count.food.toString()
-        binding.moneyCounter.text = Count.money.toString()
-        binding.moodCounter.text = Count.mood.toString()
+        binding.foodCounter.text = Information.food.toString()
+        binding.moneyCounter.text = Information.money.toString()
+        binding.moodCounter.text = Information.mood.toString()
     }
 
     fun buyClothes (money: Int, context: Context?, kindClothes: Int) {
-        if (Count.money < money) {
+        if (Information.money < money) {
             Toast.makeText(context, "Small money", Toast.LENGTH_SHORT).show()
         }
         else {
             when (kindClothes) {
                 1 -> {
-                    if (Count.normalClothes) {
-                        Toast.makeText(context, "it's already been purchased", Toast.LENGTH_SHORT).show()
-                    }
-                    else {
-                        Count.normalClothes = true
-                        Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
-                        Count.money -= money
-                        Count.spendMoney += money
-                    }
+                    normalClothes(context, money)
                 }
                 2-> {
-                    if (Count.clubClothes) {
-                        Toast.makeText(context, "it's already been purchased", Toast.LENGTH_SHORT).show()
-                    }
-                    else {
-                        Count.clubClothes = true
-                        Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
-                        Count.money -= money
-                        Count.spendMoney += money
-                    }
+                    clubClothes(context, money)
                 }
                 3-> {
-                    if (Count.workingClothes) {
-                        Toast.makeText(context, "it's already been purchased", Toast.LENGTH_SHORT).show()
-                    }
-                    else {
-                        Count.workingClothes = true
-                        Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
-                        Count.money -= money
-                        Count.spendMoney += money
-                    }
+                   workingClothes(context, money)
                 }
             }
             reloadCount()
         }
     }
 
+    private fun normalClothes(context: Context?, money: Int) {
+        if (Information.normalClothes) {
+            Toast.makeText(context, "it's already been purchased", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            Information.normalClothes = true
+            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
+            Information.money -= money
+            Information.spendMoney += money
+        }
+    }
+
+    private fun clubClothes(context: Context?, money: Int) {
+        if (Information.clubClothes) {
+            Toast.makeText(context, "it's already been purchased", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            Information.clubClothes = true
+            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
+            Information.money -= money
+            Information.spendMoney += money
+        }
+    }
+
+    private fun workingClothes(context: Context?, money: Int) {
+        if (Information.workingClothes) {
+            Toast.makeText(context, "it's already been purchased", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            Information.workingClothes = true
+            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
+            Information.money -= money
+            Information.spendMoney += money
+        }
+    }
+
+    private fun addFood(food: Int) {
+        if (Information.food + food > 100){
+            Information.food = 100
+        }
+        else if (Information.food + food < 0){
+            Information.food = 0
+        }
+        else{
+            Information.food += food
+        }
+    }
+
+    private fun addMood(mood: Int) {
+        if (Information.mood + mood > 100){
+            Information.mood = 100
+        }
+        else if (Information.mood + mood < 0){
+            Information.mood = 0
+        }
+        else {
+            Information.mood += mood
+        }
+    }
 }

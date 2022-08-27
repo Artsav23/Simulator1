@@ -47,7 +47,7 @@ class FoodFragment : Fragment() {
 
     private fun goToTheCafe() {
         binding.goToTheCafe.setOnClickListener {
-            if (!CharacteristicManager.Count.normalClothes) {
+            if (!CharacteristicManager.Information.normalClothes) {
                 Toast.makeText(activity, "In this costume you not let in cafe", Toast.LENGTH_SHORT).show()
             }
             else {
