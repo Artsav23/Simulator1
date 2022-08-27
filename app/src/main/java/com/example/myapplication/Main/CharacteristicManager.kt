@@ -110,4 +110,17 @@ object Information {
             Information.mood += mood
         }
     }
+
+   fun restart() {
+        Information.food = 30
+        Information.money = 500
+        Information.mood = 30
+        Information.AmountOfFoodEaten = 0
+        Information.spendMoney = 0
+        Information.normalClothes = false
+        Information.clubClothes = false
+        Information.workingClothes = false
+        Information.timeInSimulator = 0
+       reloadCount()
+    }
 }
