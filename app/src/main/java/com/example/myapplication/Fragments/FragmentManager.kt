@@ -2,11 +2,13 @@ package com.example.myapplication.Fragments
 
 import android.content.Context
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.example.myapplication.Information
 import com.example.myapplication.Main.CharacteristicManager
 
-class FragmentManager {
+open class FragmentManager: Fragment() {
 
-    var count = CharacteristicManager.Information
+    open var count = Information
 
     fun action (foodRange: IntRange, money: IntRange, mood: IntRange, context: Context?) {
         val foodPoint = foodRange.random()

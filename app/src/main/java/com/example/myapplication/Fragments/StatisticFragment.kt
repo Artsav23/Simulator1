@@ -4,16 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import com.example.myapplication.Information
 import com.example.myapplication.InformationAboutSimulatorActivity
 import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentStatisticBinding
 
 
-class StatisticFragment : Fragment() {
+class StatisticFragment : FragmentManager() {
 
     lateinit var  binding: FragmentStatisticBinding
-    private var costume = CharacteristicManager.Information
+    private var costume = Information
     private var characteristicManager = CharacteristicManager()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -74,14 +75,14 @@ class StatisticFragment : Fragment() {
 
 
     private fun amountFood() {
-        binding.amountFood.text = CharacteristicManager.Information.AmountOfFoodEaten.toString()
+        binding.amountFood.text = Information.AmountOfFoodEaten.toString()
     }
 
     private fun spendMoney() {
-        binding.spendMoneyNumber.text = CharacteristicManager.Information.spendMoney.toString()
+        binding.spendMoneyNumber.text = Information.spendMoney.toString()
     }
 
     private fun time() {
-        binding.time.text = "${CharacteristicManager.Information.timeInSimulator} min"
+        binding.time.text = "${Information.timeInSimulator} min"
     }
 }

@@ -9,11 +9,9 @@ import android.widget.Toast
 import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentMoodBinding
 
-class MoodFragment : Fragment() {
+class MoodFragment : FragmentManager() {
 
     private lateinit var binding: FragmentMoodBinding
-    private var moodManager = FragmentManager()
-    var count = CharacteristicManager.Information
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMoodBinding.inflate(inflater)
@@ -29,14 +27,14 @@ class MoodFragment : Fragment() {
 
     private fun walkToPark() {
         binding.walkToPark.setOnClickListener {
-            moodManager.action(-2..0, 0..0, 3..6, context)
+            action(-2..0, 0..0, 3..6, context)
         }
     }
 
     private fun goToIceSkating() {
         binding.goToIceSkating.setOnClickListener {
             if (count.normalClothes) {
-                moodManager.action(-10..-3, -10..-10, 10..15, context)
+                action(-10..-3, -10..-10, 10..15, context)
             }
             else {
                 Toast.makeText(context, "Buy normal costume", Toast.LENGTH_SHORT).show()
@@ -46,7 +44,7 @@ class MoodFragment : Fragment() {
 
     private fun talkWithPasserby() {
         binding.talkWithPasserby.setOnClickListener {
-            moodManager.action(-2..0, 0..2, 3..6, context)
+            action(-2..0, 0..2, 3..6, context)
         }
     }
 }

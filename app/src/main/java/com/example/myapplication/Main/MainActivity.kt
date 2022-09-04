@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.myapplication.Information
 import com.example.myapplication.Main.MainActivity.Binding.binding
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     private fun time() {
         while (true) {
             Thread.sleep(60000)
-            CharacteristicManager.Information.timeInSimulator += 1
+            Information.timeInSimulator += 1
         }
     }
 }
