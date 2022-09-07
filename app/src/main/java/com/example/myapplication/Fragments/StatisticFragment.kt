@@ -3,7 +3,6 @@ package com.example.myapplication.Fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import com.example.myapplication.Information
 import com.example.myapplication.InformationAboutSimulatorActivity
 import com.example.myapplication.Main.CharacteristicManager
@@ -11,9 +10,9 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentStatisticBinding
 
 
-class StatisticFragment : FragmentManager() {
+class StatisticFragment : BaseFragment() {
 
-    lateinit var  binding: FragmentStatisticBinding
+    lateinit var binding: FragmentStatisticBinding
     private var costume = Information
     private var characteristicManager = CharacteristicManager()
 
@@ -24,10 +23,10 @@ class StatisticFragment : FragmentManager() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        costume()
-        amountFood()
-        spendMoney()
-        time()
+        costumeVisibility()
+        foodCounter()
+        moneyCounter()
+        timeCounter()
         setHasOptionsMenu(true)
     }
 
@@ -41,17 +40,17 @@ class StatisticFragment : FragmentManager() {
             R.id.info -> startActivity(Intent(activity, InformationAboutSimulatorActivity::class.java))
             R.id.restart -> {
                 characteristicManager.restart()
-                amountFood()
-                spendMoney()
-                time()
-                costume()
+                foodCounter()
+                moneyCounter()
+                timeCounter()
+                costumeVisibility()
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
 
-    private fun costume() {
+    private fun costumeVisibility() {
         if (costume.normalClothes) {
             binding.normalCostume.visibility = View.VISIBLE
         }
@@ -74,15 +73,15 @@ class StatisticFragment : FragmentManager() {
     }
 
 
-    private fun amountFood() {
+    private fun foodCounter() {
         binding.amountFood.text = Information.AmountOfFoodEaten.toString()
     }
 
-    private fun spendMoney() {
+    private fun moneyCounter() {
         binding.spendMoneyNumber.text = Information.spendMoney.toString()
     }
 
-    private fun time() {
+    private fun timeCounter() {
         binding.time.text = "${Information.timeInSimulator} min"
     }
 }

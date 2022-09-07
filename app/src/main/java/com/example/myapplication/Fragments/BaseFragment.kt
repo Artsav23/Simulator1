@@ -6,9 +6,10 @@ import androidx.fragment.app.Fragment
 import com.example.myapplication.Information
 import com.example.myapplication.Main.CharacteristicManager
 
-open class FragmentManager: Fragment() {
+open class BaseFragment: Fragment() {
 
     open var count = Information
+    var abc = 1
 
     fun action (foodRange: IntRange, money: IntRange, mood: IntRange, context: Context?) {
         val foodPoint = foodRange.random()

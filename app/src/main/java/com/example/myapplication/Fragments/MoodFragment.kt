@@ -1,15 +1,13 @@
 package com.example.myapplication.Fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentMoodBinding
 
-class MoodFragment : FragmentManager() {
+class MoodFragment : BaseFragment() {
 
     private lateinit var binding: FragmentMoodBinding
 
@@ -20,18 +18,18 @@ class MoodFragment : FragmentManager() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        walkToPark()
-        goToIceSkating()
-        talkWithPasserby()
+        walkToParkAction()
+        iceSkatingAction()
+        setPasserbyAction()
     }
 
-    private fun walkToPark() {
+    private fun walkToParkAction() {
         binding.walkToPark.setOnClickListener {
             action(-2..0, 0..0, 3..6, context)
         }
     }
 
-    private fun goToIceSkating() {
+    private fun iceSkatingAction() {
         binding.goToIceSkating.setOnClickListener {
             if (count.normalClothes) {
                 action(-10..-3, -10..-10, 10..15, context)
@@ -42,7 +40,7 @@ class MoodFragment : FragmentManager() {
         }
     }
 
-    private fun talkWithPasserby() {
+    private fun setPasserbyAction() {
         binding.talkWithPasserby.setOnClickListener {
             action(-2..0, 0..2, 3..6, context)
         }

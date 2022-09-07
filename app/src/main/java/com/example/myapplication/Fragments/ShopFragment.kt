@@ -20,24 +20,24 @@ class ShopFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        buyNormalCostume()
-        buyClubCostume()
-        buyWorkingClothes()
+        normalCostumeAction()
+        clubCostumeAction()
+        workingClothesAction()
     }
 
-    private fun buyNormalCostume() {
+    private fun normalCostumeAction() {
         binding.buyNormalCostume.setOnClickListener {
             viewModel.buyClothes(money = 50, context, kindClothes =  1)
         }
     }
 
-    private fun buyClubCostume() {
+    private fun clubCostumeAction() {
         binding.buyClubCostume.setOnClickListener {
             viewModel.buyClothes(money = 100, context, kindClothes = 2)
         }
     }
 
-    private fun buyWorkingClothes() {
+    private fun workingClothesAction() {
         binding.buyWorkingClothes.setOnClickListener {
             viewModel.buyClothes(money = 250, context, kindClothes = 3)
         }
