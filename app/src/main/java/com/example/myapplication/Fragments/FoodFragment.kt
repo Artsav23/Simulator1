@@ -1,47 +1,55 @@
 package com.example.myapplication.Fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.myapplication.Main.MainActivityViewModel
+import com.example.myapplication.Information
 import com.example.myapplication.databinding.FragmentFoodBinding
 
-class FoodFragment : Fragment() {
+class FoodFragment : BaseFragment() {
 
     private lateinit var binding: FragmentFoodBinding
-    private val fragmentViewModel = FragmentViewModel()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentFoodBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHotDogAction()
+        setPizzaAction()
+        setGarbageAction()
+        cafeAction()
+    }
 
+    private fun setGarbageAction() {
         binding.eatWithTheGarbage.setOnClickListener {
-            fragmentViewModel.action(1..3, 0..0, -3..-1, context)
+            action(foodRange = 1..3, money = 0..0, mood = -3..-1, context)
         }
+    }
 
+    private fun setHotDogAction() {
         binding.eatHotdog.setOnClickListener {
-            fragmentViewModel.action(4..6, -5..-5, 0..0, context)
+            action(foodRange = 4..6, money = -5..-5, mood = 0..0, context)
         }
+    }
 
+    private fun setPizzaAction() {
         binding.eatPizza.setOnClickListener {
-            fragmentViewModel.action(6..10, -10..-10, 0..0, context)
+            action(foodRange = 6..10, money = -10..-10, mood = 0..0, context)
         }
+    }
 
+    private fun cafeAction() {
         binding.goToTheCafe.setOnClickListener {
-            if (!MainActivityViewModel.Count.normalClothes) {
+            if (!Information.normalClothes) {
                 Toast.makeText(activity, "In this costume you not let in cafe", Toast.LENGTH_SHORT).show()
             }
             else {
-                fragmentViewModel.action(10..15, -20..-20, null, context)
+                action(10..15, -20..-20, 0..0, context)
             }
         }
     }

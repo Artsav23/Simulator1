@@ -24,4 +24,8 @@
         android:id="@+id/shopFragment"
         android:name="com.example.myapplication.Fragments.ShopFragment"
         android:label="@string/Shop" />
+    <fragment
+        android:id="@+id/statisticFragment"
+        android:name="com.example.myapplication.Fragments.StatisticFragment"
+        android:label="Statistic" />
 </navigation>

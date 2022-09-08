@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Simulator</string>
     <string name="food">Food</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="description">This game is designed to explore the possibilities of Kotlin through practical work. The game itself is a simulator of a poor man who is trying to climb the social ladder. You can buy food, relax, earn money, and as you move up the social ladder, you will encounter new things and small difficulties, for example, you will have to buy clothes, learn new things to be hired, and so on. If you failed the first time, you can restart the game and start all over again. Good luck</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Money">Money</string>
     <string name="Mood">Mood</string>
     <string name="Shop">Shop</string>
+    <string name="Statistic">Statistic</string>
 </resources>
