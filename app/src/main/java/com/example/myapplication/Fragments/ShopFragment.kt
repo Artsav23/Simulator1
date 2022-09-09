@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentShopBinding
 
-class ShopFragment : Fragment() {
+class ShopFragment(private var viewModel: CharacteristicManager) : Fragment() {
 
     private lateinit var binding: FragmentShopBinding
-    private var viewModel = CharacteristicManager()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentShopBinding.inflate(inflater)

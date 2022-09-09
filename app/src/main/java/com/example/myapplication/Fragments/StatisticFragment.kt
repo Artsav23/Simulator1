@@ -10,11 +10,10 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentStatisticBinding
 
 
-class StatisticFragment : BaseFragment() {
+class StatisticFragment(private var characteristicManager: CharacteristicManager) : BaseFragment(characteristicManager) {
 
     lateinit var binding: FragmentStatisticBinding
     private var costume = Information
-    private var characteristicManager = CharacteristicManager()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentStatisticBinding.inflate(inflater)

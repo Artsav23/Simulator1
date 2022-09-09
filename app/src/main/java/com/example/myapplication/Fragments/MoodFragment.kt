@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentMoodBinding
 
-class MoodFragment : BaseFragment() {
+class MoodFragment(characteristicManager: CharacteristicManager) : BaseFragment(characteristicManager) {
 
     private lateinit var binding: FragmentMoodBinding
 
@@ -25,14 +26,14 @@ class MoodFragment : BaseFragment() {
 
     private fun walkToParkAction() {
         binding.walkToPark.setOnClickListener {
-            action(-2..0, 0..0, 3..6, context)
+            parkAction()
         }
     }
 
     private fun iceSkatingAction() {
         binding.goToIceSkating.setOnClickListener {
-            if (count.normalClothes) {
-                action(-10..-3, -10..-10, 10..15, context)
+            if (information.normalClothes) {
+                goIceSkatingAction()
             }
             else {
                 Toast.makeText(context, "Buy normal costume", Toast.LENGTH_SHORT).show()
@@ -42,7 +43,7 @@ class MoodFragment : BaseFragment() {
 
     private fun setPasserbyAction() {
         binding.talkWithPasserby.setOnClickListener {
-            action(-2..0, 0..2, 3..6, context)
+            talkWithPasserby()
         }
     }
 }

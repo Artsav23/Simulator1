@@ -2,10 +2,14 @@ package com.example.myapplication.Main
 
 import android.content.Context
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
+import androidx.fragment.app.FragmentManager
+import com.example.myapplication.Fragments.*
 import com.example.myapplication.Information
-import com.example.myapplication.Main.MainActivity.Binding.binding
+import com.example.myapplication.R
+import com.example.myapplication.databinding.ActivityMainBinding
 
-class CharacteristicManager {
+class CharacteristicManager(private var binding: ActivityMainBinding) {
     private var  information = Information
 
 
@@ -113,5 +117,38 @@ class CharacteristicManager {
         information.workingClothes = false
         information.timeInSimulator = 0
        reloadCount()
+    }
+
+    fun onClickNavBottom(supportFragmentManager: FragmentManager, supportActionBar: ActionBar?, characteristicManager: CharacteristicManager) {
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            when (it.itemId) {
+
+                R.id.foodFragment -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.placeHolder, FoodFragment(characteristicManager)).commit()
+                    supportActionBar?.title = "Food"
+                }
+
+                R.id.moneyFragment -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.placeHolder, MoneyFragment(characteristicManager)).commit()
+                    supportActionBar?.title = "Money"
+                }
+
+                R.id.moodFragment -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.placeHolder, MoodFragment(characteristicManager)).commit()
+                    supportActionBar?.title = "Mood"
+                }
+
+                R.id.shopFragment -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.placeHolder, ShopFragment(characteristicManager)).commit()
+                    supportActionBar?.title = "Shop"
+                }
+
+                R.id.statisticFragment -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.placeHolder, StatisticFragment(characteristicManager)).commit()
+                    supportActionBar?.title = "Statistics"
+                }
+            }
+            true
+        }
     }
 }

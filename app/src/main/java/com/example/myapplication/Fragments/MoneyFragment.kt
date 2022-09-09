@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentMoneyBinding
 
-class MoneyFragment : BaseFragment() {
+class MoneyFragment(characteristicManager: CharacteristicManager) : BaseFragment(characteristicManager) {
 
     private lateinit var binding: FragmentMoneyBinding
 
@@ -23,13 +24,13 @@ class MoneyFragment : BaseFragment() {
 
     private fun setTrashAction() {
         binding.searchInTheTrash.setOnClickListener {
-            action(foodRange = -3..2, money =  2..5, mood =  -5..-3, context)
+            searchTrashAction()
         }
     }
 
     private fun thePanhandleAction() {
         binding.panhandle.setOnClickListener {
-            action(foodRange = -3..1, money = 2..6, mood = -3..-2, context)
+            panhandleAction()
         }
     }
 }
