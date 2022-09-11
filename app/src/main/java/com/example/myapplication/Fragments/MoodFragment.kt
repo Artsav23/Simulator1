@@ -8,7 +8,7 @@ import android.widget.Toast
 import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentMoodBinding
 
-class MoodFragment(characteristicManager: CharacteristicManager) : BaseFragment(characteristicManager) {
+class MoodFragment(private var characteristicManager: CharacteristicManager) : BaseFragment(characteristicManager) {
 
     private lateinit var binding: FragmentMoodBinding
 
@@ -32,7 +32,7 @@ class MoodFragment(characteristicManager: CharacteristicManager) : BaseFragment(
 
     private fun iceSkatingAction() {
         binding.goToIceSkating.setOnClickListener {
-            if (information.normalClothes) {
+            if (characteristicManager.normalClothes) {
                 goIceSkatingAction()
             }
             else {
