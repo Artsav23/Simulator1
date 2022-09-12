@@ -2,13 +2,8 @@ package com.example.myapplication.Main
 
 import android.content.Context
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.fragment.app.FragmentManager
-import com.example.myapplication.Fragments.*
-import com.example.myapplication.R
-import com.example.myapplication.databinding.ActivityMainBinding
 
-class CharacteristicManager() {
+class CharacteristicManager {
 
     var onReloadListener: () -> Unit = {}
     var food = 30
@@ -35,7 +30,7 @@ class CharacteristicManager() {
 
     fun buyClothes (money: Int, context: Context?, kindClothes: Int) {
         if (this.money < money) {
-            Toast.makeText(context, "Small money", Toast.LENGTH_SHORT).show()
+            setSendMessage(context, "Small money")
         }
         else {
             when (kindClothes) {
@@ -55,11 +50,11 @@ class CharacteristicManager() {
 
     private fun normalClothes(context: Context?, money: Int) {
         if (this.normalClothes) {
-            Toast.makeText(context, "it's already been purchased", Toast.LENGTH_SHORT).show()
+            setSendMessage(context, "It's already been purchased")
         }
         else {
             this.normalClothes = true
-            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
+            setSendMessage(context, "Done")
             this.money -= money
             this.spendMoney += money
         }
@@ -67,11 +62,11 @@ class CharacteristicManager() {
 
     private fun clubClothes(context: Context?, money: Int) {
         if (this.clubClothes) {
-            Toast.makeText(context, "it's already been purchased", Toast.LENGTH_SHORT).show()
+            setSendMessage(context, "It's already been purchased")
         }
         else {
             this.clubClothes = true
-            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
+            setSendMessage(context, "Done")
             this.money -= money
             this.spendMoney += money
         }
@@ -79,11 +74,11 @@ class CharacteristicManager() {
 
     private fun workingClothes(context: Context?, money: Int) {
         if (this.workingClothes) {
-            Toast.makeText(context, "it's already been purchased", Toast.LENGTH_SHORT).show()
+            setSendMessage(context, "It's already been purchased")
         }
         else {
             this.workingClothes = true
-            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
+            setSendMessage(context, "Done")
             this.money -= money
             this.spendMoney += money
         }
@@ -111,6 +106,11 @@ class CharacteristicManager() {
         else {
             this.mood += mood
         }
+    }
+
+
+    private fun setSendMessage(context: Context?, message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
    fun restart() {

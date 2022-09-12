@@ -1,5 +1,6 @@
 package com.example.myapplication.Fragments
 
+import android.content.Context
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.myapplication.Main.CharacteristicManager
@@ -8,7 +9,7 @@ open class BaseFragment(private var characteristicManager: CharacteristicManager
 
     private fun checkFood(foodPoint: Int, moodPoint: Int, moneyPoint: Int) {
         if (characteristicManager.food + foodPoint < 0 ) {
-            Toast.makeText(context, "You are hungry", Toast.LENGTH_SHORT).show()
+            setSendMessage(context, "You are hungry")
         }
         else {
             checkMood(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = moneyPoint)
@@ -17,7 +18,7 @@ open class BaseFragment(private var characteristicManager: CharacteristicManager
 
     private fun checkMood(foodPoint: Int, moodPoint: Int, moneyPoint: Int) {
         if (characteristicManager.mood + moodPoint < 0) {
-            Toast.makeText(context, "You are not funny", Toast.LENGTH_SHORT).show()
+            setSendMessage(context, "You are not funny")
         }
         else {
             checkMoney(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = moneyPoint)
@@ -26,7 +27,7 @@ open class BaseFragment(private var characteristicManager: CharacteristicManager
 
     private fun checkMoney(foodPoint: Int, moodPoint: Int, moneyPoint: Int) {
         if (characteristicManager.money + moneyPoint < 0) {
-            Toast.makeText(context, "Small money", Toast.LENGTH_SHORT).show()
+            setSendMessage(context, "Small money")
         }
         else {
             if (moneyPoint < 0){
@@ -99,5 +100,10 @@ open class BaseFragment(private var characteristicManager: CharacteristicManager
         val moodPoint = (-3..-2).random()
         val moneyPoint = (2..6).random()
         checkFood(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = moneyPoint)
+    }
+
+    private fun setSendMessage(context: Context?, message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+
     }
 }
