@@ -71,7 +71,7 @@ class StatisticFragment(private var characteristicManager: CharacteristicManager
 
 
     private fun foodCounter() {
-        binding.amountFood.text = characteristicManager.AmountOfFoodEaten.toString()
+        binding.amountFood.text = characteristicManager.amountOfFoodEaten.toString()
     }
 
     private fun moneyCounter() {

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentMoneyBinding
 
-class MoneyFragment(characteristicManager: CharacteristicManager) : BaseFragment(characteristicManager) {
+class MoneyFragment(private var characteristicManager: CharacteristicManager) : BaseFragment(characteristicManager) {
 
     private lateinit var binding: FragmentMoneyBinding
 
@@ -20,6 +20,8 @@ class MoneyFragment(characteristicManager: CharacteristicManager) : BaseFragment
         super.onViewCreated(view, savedInstanceState)
         setTrashAction()
         thePanhandleAction()
+        setShopAction()
+        setOfficeAction()
     }
 
     private fun setTrashAction() {
@@ -31,6 +33,33 @@ class MoneyFragment(characteristicManager: CharacteristicManager) : BaseFragment
     private fun thePanhandleAction() {
         binding.panhandle.setOnClickListener {
             panhandleAction()
+        }
+    }
+
+    private fun  setShopAction() {
+        binding.workInMagazine.setOnClickListener {
+            if (characteristicManager.multiplicationTable) {
+                workShopAction()
+            }
+            else {
+                setSendMessage( "You should learn multiplication table")
+            }
+        }
+    }
+
+    private fun setOfficeAction() {
+        binding.workInOffice.setOnClickListener {
+            if (characteristicManager.courseCompletion) {
+                if (characteristicManager.workingClothes) {
+                    workOfficeAction()
+                }
+                else {
+                    setSendMessage( "You should buy working clothes")
+                }
+            }
+            else {
+                setSendMessage( "You should take courses")
+            }
         }
     }
 }

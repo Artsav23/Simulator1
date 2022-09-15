@@ -22,6 +22,9 @@ class MoodFragment(private var characteristicManager: CharacteristicManager) : B
         walkToParkAction()
         iceSkatingAction()
         setPasserbyAction()
+        setMultiplicationTableAction()
+        setCoursesAction()
+        setClubAction()
     }
 
     private fun walkToParkAction() {
@@ -36,7 +39,18 @@ class MoodFragment(private var characteristicManager: CharacteristicManager) : B
                 goIceSkatingAction()
             }
             else {
-                Toast.makeText(context, "Buy normal costume", Toast.LENGTH_SHORT).show()
+                setSendMessage( "Buy normal costume")
+            }
+        }
+    }
+
+    private fun setMultiplicationTableAction() {
+        binding.learnMultiplicationTable.setOnClickListener {
+            if (characteristicManager.multiplicationTable) {
+                setSendMessage( "you know multiplication table")
+            }
+            else {
+                multiplicationTableAction()
             }
         }
     }
@@ -44,6 +58,33 @@ class MoodFragment(private var characteristicManager: CharacteristicManager) : B
     private fun setPasserbyAction() {
         binding.talkWithPasserby.setOnClickListener {
             talkWithPasserby()
+        }
+    }
+
+    private fun setClubAction() {
+        binding.goToTheClub.setOnClickListener {
+            if (characteristicManager.clubClothes) {
+                goClubAction()
+            }
+            else {
+                setSendMessage( "You should buy Club clothes")
+            }
+        }
+    }
+
+    private fun setCoursesAction() {
+        binding.takeCourses.setOnClickListener {
+            if (characteristicManager.courseCompletion) {
+                setSendMessage("You have already completed the course")
+            }
+            else {
+                if (characteristicManager.money > 75) {
+                    takeCoursesAction()
+                }
+                else {
+                    setSendMessage( "Small money")
+                }
+            }
         }
     }
 }

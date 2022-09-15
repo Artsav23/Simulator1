@@ -100,6 +100,108 @@
                 android:textSize="24sp" />
 
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/learn_multiplication_table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/teal_700"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_multiplication_table" />
+
+            <TextView
+                android:id="@+id/learn_multiplication_table_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Learn multiplication table"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="10$"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+           <LinearLayout
+            android:id="@+id/go_to_the_club"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/teal_700"
+            android:orientation="horizontal">
+
+               <ImageView
+                   android:id="@+id/imageView6"
+                   android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:layout_weight="1"
+                   android:src="@drawable/ic_club" />
+
+            <TextView
+                android:id="@+id/go_to_the_club_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Go to the club"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="25$"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+         <LinearLayout
+            android:id="@+id/take_courses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/teal_700"
+            android:orientation="horizontal">
+
+             <ImageView
+                 android:id="@+id/imageView5"
+                 android:layout_width="30dp"
+                 android:layout_height="30dp"
+                 android:layout_weight="1"
+                 android:src="@drawable/ic_school" />
+
+            <TextView
+                android:id="@+id/take_courses_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Take courses"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="75$"
+                android:textSize="24sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

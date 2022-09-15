@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager
 import com.example.myapplication.Fragments.*
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,10 +26,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         characteristicManager.reloadCount()
+        thread {
+            minuteInSimulator()
+        }
         supportFragmentManager.beginTransaction().replace(R.id.placeHolder, FoodFragment(characteristicManager)).commit()
         onClickNavBottom()
     }
 
+     private fun minuteInSimulator() {
+         while (true) {
+             Thread.sleep(60000)
+             characteristicManager.timeInSimulator += 1
+         }
+    }
 
     private fun onClickNavBottom() {
         binding.bottomNavigationView.setOnItemSelectedListener {

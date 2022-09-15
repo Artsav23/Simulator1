@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentShopBinding
 
-class ShopFragment(private var viewModel: CharacteristicManager) : Fragment() {
+class ShopFragment(private var viewModel: CharacteristicManager) : BaseFragment(characteristicManager = viewModel) {
 
     private lateinit var binding: FragmentShopBinding
 
@@ -22,6 +22,7 @@ class ShopFragment(private var viewModel: CharacteristicManager) : Fragment() {
         normalCostumeAction()
         clubCostumeAction()
         workingClothesAction()
+        bullshitImposedByTheDeveloperAction()
     }
 
     private fun normalCostumeAction() {
@@ -39,6 +40,12 @@ class ShopFragment(private var viewModel: CharacteristicManager) : Fragment() {
     private fun workingClothesAction() {
         binding.buyWorkingClothes.setOnClickListener {
             viewModel.buyClothes(money = 250, context, kindClothes = 3)
+        }
+    }
+
+    private fun bullshitImposedByTheDeveloperAction() {
+        binding.buyBullshitImposedByTheDeveloper.setOnClickListener {
+            bullshitAction()
         }
     }
 }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentFoodBinding
 
@@ -23,6 +22,7 @@ class FoodFragment(private var characteristicManager: CharacteristicManager) : B
         setPizzaAction()
         setGarbageAction()
         goCafeAction()
+        goRestaurantAction()
     }
 
     private fun setGarbageAction() {
@@ -46,10 +46,21 @@ class FoodFragment(private var characteristicManager: CharacteristicManager) : B
     private fun goCafeAction() {
         binding.goToTheCafe.setOnClickListener {
             if (!characteristicManager.normalClothes) {
-                Toast.makeText(activity, "In this costume you not let in cafe", Toast.LENGTH_SHORT).show()
+                setSendMessage( "In this costume you not let in cafe")
             }
             else {
                 cafeAction()
+            }
+        }
+    }
+
+     private fun goRestaurantAction() {
+        binding.goToTheRestaurant.setOnClickListener {
+            if (!characteristicManager.normalClothes) {
+                setSendMessage("In this costume you not let in restaurant")
+            }
+            else {
+                restaurantAction()
             }
         }
     }

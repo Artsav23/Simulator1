@@ -7,18 +7,20 @@ import com.example.myapplication.Main.CharacteristicManager
 
 open class BaseFragment(private var characteristicManager: CharacteristicManager): Fragment() {
 
+
     private fun checkFood(foodPoint: Int, moodPoint: Int, moneyPoint: Int) {
         if (characteristicManager.food + foodPoint < 0 ) {
-            setSendMessage(context, "You are hungry")
+            setSendMessage("You are hungry")
         }
         else {
+
             checkMood(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = moneyPoint)
         }
     }
 
     private fun checkMood(foodPoint: Int, moodPoint: Int, moneyPoint: Int) {
         if (characteristicManager.mood + moodPoint < 0) {
-            setSendMessage(context, "You are not funny")
+            setSendMessage("You are not funny")
         }
         else {
             checkMoney(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = moneyPoint)
@@ -27,14 +29,14 @@ open class BaseFragment(private var characteristicManager: CharacteristicManager
 
     private fun checkMoney(foodPoint: Int, moodPoint: Int, moneyPoint: Int) {
         if (characteristicManager.money + moneyPoint < 0) {
-            setSendMessage(context, "Small money")
+            setSendMessage( "Small money")
         }
         else {
             if (moneyPoint < 0){
                 characteristicManager.spendMoney -= moneyPoint
             }
             if (foodPoint > 0 ) {
-                characteristicManager.AmountOfFoodEaten += 1
+                characteristicManager.amountOfFoodEaten += 1
             }
             characteristicManager.add(food = foodPoint, money = moneyPoint, mood = moodPoint)
         }
@@ -61,11 +63,29 @@ open class BaseFragment(private var characteristicManager: CharacteristicManager
         checkFood(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = moneyPoint)
     }
 
+    fun restaurantAction() {
+        val foodPoint = (15..20).random()
+        val moodPoint = 5
+        val moneyPoint = -50
+        checkFood(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = moneyPoint)
+    }
+
     fun hotDogAction() {
         val foodPoint = (4..6).random()
         val moodPoint = 0
         val moneyPoint = -5
         checkFood(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = moneyPoint)
+    }
+
+    fun multiplicationTableAction() {
+        if (characteristicManager.money < 10){
+            setSendMessage( "Small money")
+        }
+        else{
+            characteristicManager.multiplicationTable = true
+            characteristicManager.add(food = -2, mood = 10, money = -10)
+        }
+
     }
 
     fun searchTrashAction() {
@@ -94,6 +114,12 @@ open class BaseFragment(private var characteristicManager: CharacteristicManager
         val moneyPoint = -10
         checkFood(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = moneyPoint)
     }
+    fun goClubAction() {
+        val foodPoint = (-5..-3).random()
+        val moodPoint = (15..30).random()
+        val moneyPoint = -25
+        checkFood(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = moneyPoint)
+    }
 
     fun panhandleAction() {
         val foodPoint = (-3..1).random()
@@ -102,8 +128,33 @@ open class BaseFragment(private var characteristicManager: CharacteristicManager
         checkFood(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = moneyPoint)
     }
 
-    private fun setSendMessage(context: Context?, message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    fun workShopAction() {
+        val moodPoint = (-10..-7).random()
+        val foodPoint = (-10..-7).random()
+        checkFood(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = 25)
+    }
+    fun workOfficeAction() {
+        val moodPoint = (-13..-10).random()
+        val foodPoint = (-13..-10).random()
+        checkFood(foodPoint = foodPoint, moodPoint = moodPoint, moneyPoint = 100)
+    }
 
+    fun bullshitAction() {
+        if (characteristicManager.bullshitDeveloper) {
+            setSendMessage( "Why do you need a second such crap?")
+        }
+        else {
+            characteristicManager.bullshitDeveloper = true
+            setSendMessage( "Congratulation! You buy don't know what")
+        }
+    }
+
+    fun takeCoursesAction() {
+        characteristicManager.courseCompletion = true
+        checkMoney(foodPoint = 0, moodPoint = 20, moneyPoint = -75)
+    }
+
+    protected fun setSendMessage( message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

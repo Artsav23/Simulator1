@@ -9,12 +9,15 @@ class CharacteristicManager {
     var food = 30
     var money = 500
     var mood = 30
-    var AmountOfFoodEaten = 0
+    var amountOfFoodEaten = 0
     var spendMoney = 0
     var normalClothes = false
     var clubClothes = false
     var workingClothes = false
     var timeInSimulator = 0
+    var multiplicationTable = false
+    var bullshitDeveloper = false
+    var courseCompletion = false
 
 
     fun add(food: Int, money: Int, mood: Int) {
@@ -114,15 +117,18 @@ class CharacteristicManager {
     }
 
    fun restart() {
-        food = 30
-        money = 500
-        mood = 30
-        AmountOfFoodEaten = 0
-        spendMoney = 0
-        normalClothes = false
-        clubClothes = false
-        workingClothes = false
-        timeInSimulator = 0
+       food = 30
+       money = 500
+       mood = 30
+       amountOfFoodEaten = 0
+       spendMoney = 0
+       normalClothes = false
+       clubClothes = false
+       workingClothes = false
+       timeInSimulator = 0
+       multiplicationTable = false
+       bullshitDeveloper = false
+       courseCompletion = false
        reloadCount()
     }
 }
