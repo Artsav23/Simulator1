@@ -2,9 +2,6 @@ package com.example.myapplication.Main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.ActionBar
-import androidx.fragment.app.FragmentManager
 import com.example.myapplication.Fragments.*
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding

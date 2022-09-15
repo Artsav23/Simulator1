@@ -2,7 +2,6 @@ package com.example.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.view.MenuItem
 import com.example.myapplication.databinding.ActivityInformationAboutSimulatorBinding
 

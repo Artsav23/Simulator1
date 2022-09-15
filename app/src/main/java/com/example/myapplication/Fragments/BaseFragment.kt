@@ -1,6 +1,5 @@
 package com.example.myapplication.Fragments
 
-import android.content.Context
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.myapplication.Main.CharacteristicManager
