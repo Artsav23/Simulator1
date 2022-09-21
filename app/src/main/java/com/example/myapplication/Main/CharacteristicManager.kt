@@ -2,29 +2,38 @@ package com.example.myapplication.Main
 
 import android.content.Context
 import android.widget.Toast
-import com.example.myapplication.Information
-import com.example.myapplication.Main.MainActivity.Binding.binding
 
 class CharacteristicManager {
-    private var  information = Information
+
+    var onReloadListener: () -> Unit = {}
+    var food = 30
+    var money = 500
+    var mood = 30
+    var amountOfFoodEaten = 0
+    var spendMoney = 0
+    var normalClothes = false
+    var clubClothes = false
+    var workingClothes = false
+    var timeInSimulator = 0
+    var multiplicationTable = false
+    var bullshitDeveloper = false
+    var courseCompletion = false
 
 
     fun add(food: Int, money: Int, mood: Int) {
         addFood(food)
         addMood(mood)
-        Information.money += money
+        this.money += money
         reloadCount()
     }
 
     fun reloadCount() {
-        binding.foodCounter.text = information.food.toString()
-        binding.moneyCounter.text = information.money.toString()
-        binding.moodCounter.text = information.mood.toString()
+        onReloadListener()
     }
 
     fun buyClothes (money: Int, context: Context?, kindClothes: Int) {
-        if (information.money < money) {
-            Toast.makeText(context, "Small money", Toast.LENGTH_SHORT).show()
+        if (this.money < money) {
+            setSendMessage(context, "Small money")
         }
         else {
             when (kindClothes) {
@@ -43,75 +52,83 @@ class CharacteristicManager {
     }
 
     private fun normalClothes(context: Context?, money: Int) {
-        if (information.normalClothes) {
-            Toast.makeText(context, "it's already been purchased", Toast.LENGTH_SHORT).show()
+        if (this.normalClothes) {
+            setSendMessage(context, "It's already been purchased")
         }
         else {
-            information.normalClothes = true
-            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
-            information.money -= money
-            information.spendMoney += money
+            this.normalClothes = true
+            setSendMessage(context, "Done")
+            this.money -= money
+            this.spendMoney += money
         }
     }
 
     private fun clubClothes(context: Context?, money: Int) {
-        if (information.clubClothes) {
-            Toast.makeText(context, "it's already been purchased", Toast.LENGTH_SHORT).show()
+        if (this.clubClothes) {
+            setSendMessage(context, "It's already been purchased")
         }
         else {
-            information.clubClothes = true
-            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
-            information.money -= money
-            information.spendMoney += money
+            this.clubClothes = true
+            setSendMessage(context, "Done")
+            this.money -= money
+            this.spendMoney += money
         }
     }
 
     private fun workingClothes(context: Context?, money: Int) {
-        if (information.workingClothes) {
-            Toast.makeText(context, "it's already been purchased", Toast.LENGTH_SHORT).show()
+        if (this.workingClothes) {
+            setSendMessage(context, "It's already been purchased")
         }
         else {
-            information.workingClothes = true
-            Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
-            information.money -= money
-            information.spendMoney += money
+            this.workingClothes = true
+            setSendMessage(context, "Done")
+            this.money -= money
+            this.spendMoney += money
         }
     }
 
     private fun addFood(food: Int) {
-        if (information.food + food > 100){
-            information.food = 100
+        if (this.food + food > 100){
+            this.food = 100
         }
-        else if (Information.food + food < 0){
-            information.food = 0
+        else if (this.food + food < 0){
+            this.food = 0
         }
         else{
-            information.food += food
+            this.food += food
         }
     }
 
     private fun addMood(mood: Int) {
-        if (information.mood + mood > 100){
-            information.mood = 100
+        if (this.mood + mood > 100){
+            this.mood = 100
         }
-        else if (information.mood + mood < 0){
-            information.mood = 0
+        else if (this.mood + mood < 0){
+            this.mood = 0
         }
         else {
-            information.mood += mood
+            this.mood += mood
         }
     }
 
+
+    private fun setSendMessage(context: Context?, message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
    fun restart() {
-        information.food = 30
-        information.money = 500
-        information.mood = 30
-        information.AmountOfFoodEaten = 0
-        information.spendMoney = 0
-        information.normalClothes = false
-        information.clubClothes = false
-        information.workingClothes = false
-        information.timeInSimulator = 0
+       food = 30
+       money = 500
+       mood = 30
+       amountOfFoodEaten = 0
+       spendMoney = 0
+       normalClothes = false
+       clubClothes = false
+       workingClothes = false
+       timeInSimulator = 0
+       multiplicationTable = false
+       bullshitDeveloper = false
+       courseCompletion = false
        reloadCount()
     }
 }

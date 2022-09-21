@@ -1,17 +1,15 @@
 package com.example.myapplication.Fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentShopBinding
 
-class ShopFragment : Fragment() {
+class ShopFragment(private var viewModel: CharacteristicManager) : BaseFragment(characteristicManager = viewModel) {
 
     private lateinit var binding: FragmentShopBinding
-    private var viewModel = CharacteristicManager()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentShopBinding.inflate(inflater)
@@ -23,6 +21,7 @@ class ShopFragment : Fragment() {
         normalCostumeAction()
         clubCostumeAction()
         workingClothesAction()
+        bullshitImposedByTheDeveloperAction()
     }
 
     private fun normalCostumeAction() {
@@ -40,6 +39,12 @@ class ShopFragment : Fragment() {
     private fun workingClothesAction() {
         binding.buyWorkingClothes.setOnClickListener {
             viewModel.buyClothes(money = 250, context, kindClothes = 3)
+        }
+    }
+
+    private fun bullshitImposedByTheDeveloperAction() {
+        binding.buyBullshitImposedByTheDeveloper.setOnClickListener {
+            bullshitAction()
         }
     }
 }

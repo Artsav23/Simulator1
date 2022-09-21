@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentMoodBinding
 
-class MoodFragment : BaseFragment() {
+class MoodFragment(private var characteristicManager: CharacteristicManager) : BaseFragment(characteristicManager) {
 
     private lateinit var binding: FragmentMoodBinding
 
@@ -21,28 +21,69 @@ class MoodFragment : BaseFragment() {
         walkToParkAction()
         iceSkatingAction()
         setPasserbyAction()
+        setMultiplicationTableAction()
+        setCoursesAction()
+        setClubAction()
     }
 
     private fun walkToParkAction() {
         binding.walkToPark.setOnClickListener {
-            action(-2..0, 0..0, 3..6, context)
+            parkAction()
         }
     }
 
     private fun iceSkatingAction() {
         binding.goToIceSkating.setOnClickListener {
-            if (count.normalClothes) {
-                action(-10..-3, -10..-10, 10..15, context)
+            if (characteristicManager.normalClothes) {
+                goIceSkatingAction()
             }
             else {
-                Toast.makeText(context, "Buy normal costume", Toast.LENGTH_SHORT).show()
+                setSendMessage( "Buy normal costume")
+            }
+        }
+    }
+
+    private fun setMultiplicationTableAction() {
+        binding.learnMultiplicationTable.setOnClickListener {
+            if (characteristicManager.multiplicationTable) {
+                setSendMessage( "you know multiplication table")
+            }
+            else {
+                multiplicationTableAction()
             }
         }
     }
 
     private fun setPasserbyAction() {
         binding.talkWithPasserby.setOnClickListener {
-            action(-2..0, 0..2, 3..6, context)
+            talkWithPasserby()
+        }
+    }
+
+    private fun setClubAction() {
+        binding.goToTheClub.setOnClickListener {
+            if (characteristicManager.clubClothes) {
+                goClubAction()
+            }
+            else {
+                setSendMessage( "You should buy Club clothes")
+            }
+        }
+    }
+
+    private fun setCoursesAction() {
+        binding.takeCourses.setOnClickListener {
+            if (characteristicManager.courseCompletion) {
+                setSendMessage("You have already completed the course")
+            }
+            else {
+                if (characteristicManager.money > 75) {
+                    takeCoursesAction()
+                }
+                else {
+                    setSendMessage( "Small money")
+                }
+            }
         }
     }
 }

@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.myapplication.Main.CharacteristicManager
 import com.example.myapplication.databinding.FragmentMoneyBinding
 
-class MoneyFragment : BaseFragment() {
+class MoneyFragment(private var characteristicManager: CharacteristicManager) : BaseFragment(characteristicManager) {
 
     private lateinit var binding: FragmentMoneyBinding
 
@@ -19,17 +20,46 @@ class MoneyFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setTrashAction()
         thePanhandleAction()
+        setShopAction()
+        setOfficeAction()
     }
 
     private fun setTrashAction() {
         binding.searchInTheTrash.setOnClickListener {
-            action(foodRange = -3..2, money =  2..5, mood =  -5..-3, context)
+            searchTrashAction()
         }
     }
 
     private fun thePanhandleAction() {
         binding.panhandle.setOnClickListener {
-            action(foodRange = -3..1, money = 2..6, mood = -3..-2, context)
+            panhandleAction()
+        }
+    }
+
+    private fun  setShopAction() {
+        binding.workInMagazine.setOnClickListener {
+            if (characteristicManager.multiplicationTable) {
+                workShopAction()
+            }
+            else {
+                setSendMessage( "You should learn multiplication table")
+            }
+        }
+    }
+
+    private fun setOfficeAction() {
+        binding.workInOffice.setOnClickListener {
+            if (characteristicManager.courseCompletion) {
+                if (characteristicManager.workingClothes) {
+                    workOfficeAction()
+                }
+                else {
+                    setSendMessage( "You should buy working clothes")
+                }
+            }
+            else {
+                setSendMessage( "You should take courses")
+            }
         }
     }
 }

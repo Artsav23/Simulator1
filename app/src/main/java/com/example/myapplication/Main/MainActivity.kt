@@ -1,50 +1,72 @@
 package com.example.myapplication.Main
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.example.myapplication.Information
-import com.example.myapplication.Main.MainActivity.Binding.binding
+import com.example.myapplication.Fragments.*
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var characteristicManager: CharacteristicManager
-
-    object Binding{
-    @SuppressLint("StaticFieldLeak")
+    private var characteristicManager = CharacteristicManager()
     lateinit var binding: ActivityMainBinding
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        characteristicManager = CharacteristicManager()
-        setContentView(binding.root)
-        controller()
-        thread {
-            time()
+        characteristicManager.onReloadListener = {
+            binding.foodCounter.text = characteristicManager.food.toString()
+            binding.moneyCounter.text = characteristicManager.money.toString()
+            binding.moodCounter.text = characteristicManager.mood.toString()
         }
+        setContentView(binding.root)
+
         characteristicManager.reloadCount()
+        thread {
+            minuteInSimulator()
+        }
+        supportFragmentManager.beginTransaction().replace(R.id.placeHolder, FoodFragment(characteristicManager)).commit()
+        onClickNavBottom()
     }
 
-    private fun controller() {
-        val navController = findNavController(R.id.fragment)
-        binding.bottomNavigationView.setupWithNavController(navController)
-        setupActionBarWithNavController(navController, AppBarConfiguration(setOf(R.id.foodFragment,
-            R.id.moneyFragment, R.id.moodFragment, R.id.shopFragment, R.id.statisticFragment)))
+     private fun minuteInSimulator() {
+         while (true) {
+             Thread.sleep(60000)
+             characteristicManager.timeInSimulator += 1
+         }
     }
 
-    private fun time() {
-        while (true) {
-            Thread.sleep(60000)
-            Information.timeInSimulator += 1
+    private fun onClickNavBottom() {
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            when (it.itemId) {
+
+                R.id.foodFragment -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.placeHolder, FoodFragment(characteristicManager)).commit()
+                    supportActionBar?.title = "Food"
+                }
+
+                R.id.moneyFragment -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.placeHolder, MoneyFragment(characteristicManager)).commit()
+                    supportActionBar?.title = "Money"
+                }
+
+                R.id.moodFragment -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.placeHolder, MoodFragment(characteristicManager)).commit()
+                    supportActionBar?.title = "Mood"
+                }
+
+                R.id.shopFragment -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.placeHolder, ShopFragment(characteristicManager)).commit()
+                    supportActionBar?.title = "Shop"
+                }
+
+                R.id.statisticFragment -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.placeHolder, StatisticFragment(characteristicManager)).commit()
+                    supportActionBar?.title = "Statistics"
+                }
+            }
+            true
         }
     }
 }
