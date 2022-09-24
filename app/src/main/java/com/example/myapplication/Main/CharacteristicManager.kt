@@ -1,6 +1,7 @@
 package com.example.myapplication.Main
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.widget.Toast
 
 class CharacteristicManager {
@@ -114,6 +115,38 @@ class CharacteristicManager {
 
     private fun setSendMessage(context: Context?, message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun saveData(preferences: SharedPreferences) {
+        val editor = preferences.edit()
+        editor.putInt("food", food)
+        editor.putInt("money", money)
+        editor.putInt("mood", mood)
+        editor.putInt("amountOfFoodEaten", amountOfFoodEaten)
+        editor.putInt("spendMoney", spendMoney)
+        editor.putInt("timeInSimulator", timeInSimulator)
+        editor.putBoolean("normalClothes", normalClothes)
+        editor.putBoolean("clubClothes", clubClothes)
+        editor.putBoolean("workingClothes", workingClothes)
+        editor.putBoolean("multiplicationTable", multiplicationTable)
+        editor.putBoolean("bullshitDeveloper", bullshitDeveloper)
+        editor.putBoolean("courseCompletion", courseCompletion)
+        editor.apply()
+    }
+
+    fun assignValues(preferences: SharedPreferences) {
+        food = preferences.getInt ("food", food)
+        money = preferences.getInt ("money", money)
+        mood = preferences.getInt ("mood", mood)
+        amountOfFoodEaten = preferences.getInt ("amountOfFoodEaten", amountOfFoodEaten)
+        amountOfFoodEaten = preferences.getInt ("spendMoney", amountOfFoodEaten)
+        timeInSimulator = preferences.getInt ("timeInSimulator", timeInSimulator)
+        normalClothes = preferences.getBoolean ("normalClothes", normalClothes)
+        clubClothes = preferences.getBoolean ("clubClothes", clubClothes)
+        workingClothes = preferences.getBoolean ("workingClothes", workingClothes)
+        multiplicationTable = preferences.getBoolean ("multiplicationTable", multiplicationTable)
+        bullshitDeveloper = preferences.getBoolean ("bullshitDeveloper", bullshitDeveloper)
+        courseCompletion = preferences.getBoolean ("courseCompletion", courseCompletion)
     }
 
    fun restart() {
