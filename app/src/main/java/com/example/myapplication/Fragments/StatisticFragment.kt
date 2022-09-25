@@ -1,5 +1,6 @@
 package com.example.myapplication.Fragments
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
@@ -36,11 +37,18 @@ class StatisticFragment(private var characteristicManager: CharacteristicManager
         when (item.itemId) {
             R.id.info -> startActivity(Intent(activity, InformationAboutSimulatorActivity::class.java))
             R.id.restart -> {
-                characteristicManager.restart()
-                foodCounter()
-                moneyCounter()
-                timeCounter()
-                costumeVisibility()
+                val builder = AlertDialog.Builder(activity)
+                builder.setTitle("Warning")
+                    .setMessage("Are you sure? \n All data will be reset.")
+                    .setNegativeButton("No"){ _,_ -> }
+                    .setPositiveButton("Yes") {
+                        _,_ -> characteristicManager.restart()
+                        foodCounter()
+                        moneyCounter()
+                        timeCounter()
+                        costumeVisibility()
+                    }
+                builder.show()
             }
         }
         return super.onOptionsItemSelected(item)

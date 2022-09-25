@@ -1,5 +1,6 @@
 package com.example.myapplication.Main
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplication.Fragments.*
@@ -11,17 +12,19 @@ class MainActivity : AppCompatActivity() {
 
     private var characteristicManager = CharacteristicManager()
     lateinit var binding: ActivityMainBinding
+    lateinit var preferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        preferences = getSharedPreferences("TABLE", MODE_PRIVATE)
+        characteristicManager.assignValues(preferences)
         characteristicManager.onReloadListener = {
             binding.foodCounter.text = characteristicManager.food.toString()
             binding.moneyCounter.text = characteristicManager.money.toString()
             binding.moodCounter.text = characteristicManager.mood.toString()
         }
-        setContentView(binding.root)
-
         characteristicManager.reloadCount()
         thread {
             minuteInSimulator()
@@ -68,5 +71,10 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        characteristicManager.saveData(preferences)
     }
 }
