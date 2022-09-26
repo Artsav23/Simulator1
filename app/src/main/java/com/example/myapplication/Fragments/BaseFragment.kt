@@ -145,16 +145,21 @@ open class BaseFragment(private var characteristicManager: CharacteristicManager
             setSendMessage( "Why do you need a second such crap?")
         }
         else {
-            val builder = AlertDialog.Builder(activity)
-            builder.setMessage("Congratulation! You buy don't know what, game over \n Restart?")
-                .setNegativeButton("No"){_,_ ->}
-                .setPositiveButton("Yes"){_,_ ->
-                    characteristicManager.restart()
-                }
-                .show()
-            characteristicManager.bullshitDeveloper = true
-            characteristicManager.money-=999
-            characteristicManager.reloadCount()
+            if (characteristicManager.money >= 999) {
+                val builder = AlertDialog.Builder(activity)
+                builder.setMessage("Congratulation! You buy don't know what, game over \n Restart?")
+                    .setNegativeButton("No") { _, _ -> }
+                    .setPositiveButton("Yes") { _, _ ->
+                        characteristicManager.restart()
+                    }
+                    .show()
+                characteristicManager.bullshitDeveloper = true
+                characteristicManager.money -= 999
+                characteristicManager.reloadCount()
+            }
+            else {
+                setSendMessage("No money maaan.")
+            }
         }
     }
 

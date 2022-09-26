@@ -1,5 +1,6 @@
 package com.example.myapplication.Fragments
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -86,6 +87,7 @@ class StatisticFragment(private var characteristicManager: CharacteristicManager
         binding.spendMoneyNumber.text = characteristicManager.spendMoney.toString()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun timeCounter() {
         binding.time.text = "${characteristicManager.timeInSimulator} min"
     }

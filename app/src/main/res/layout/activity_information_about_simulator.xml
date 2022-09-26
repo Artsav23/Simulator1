@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#37A0BF"
+    android:background="@drawable/background_app"
     app:layoutDescription="@xml/activity_information_about_simulator_scene"
     tools:context=".InformationAboutSimulatorActivity">
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="330dp"
         android:foregroundGravity="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,6 +35,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
