@@ -21,6 +21,5 @@ class InformationAboutSimulatorActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         finish()
         return super.onOptionsItemSelected(item)
-
     }
 }
